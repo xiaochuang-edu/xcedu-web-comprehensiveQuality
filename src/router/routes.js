@@ -12,6 +12,10 @@ const emailLayout = {
     name: 'stuinfoBox',
     path: 'cqyList/stuinfoBox',
     component: () => import('@/pages/navList/stuinfo')
+  }, {
+    name: 'commentBox',
+    path: 'cqyList/commentBox',
+    component: () => import('@/pages/navList/tcComment')
   }]
 }
 
