@@ -24,13 +24,13 @@
         </div>
       </div>
       <div class="clearfix margin-top-size-nomal">
-        <div v-for="(item, index) in tabList" :key="index" class="fl clearfix tablistDiv margin-top-size-small">
-          <span class="fl">{{ item.tabName }}</span>
-          <span class="color fl">{{ item.number }}</span>
+        <div v-for="(item, index) in tabList" :key="index" class="fl clearfix tablistDiv margin-top-size-small padding-left-right-size-nomal">
+          <span class="margin-right-size-small">{{ item.tabName }}</span>
+          <span class="color">{{ item.number }}</span>
         </div>
       </div>
     </div>
-    <div class="cardDiv fl margin-bottom-size-nomal padding-top-bottom-size-small">
+    <div class="cardDiv fl margin-bottom-size-nomal padding-top-bottom-size-small" style="margin-right: 0;">
       <div class="clearfix">
         <div class="card-div-title fl">学生特长排名</div>
         <div class="lookmore fr">查看更多</div>
@@ -53,7 +53,7 @@
       </div>
       <div id="main1" ref="main1" />
     </div>
-    <div class="cardDiv fl padding-top-bottom-size-small">
+    <div class="cardDiv fl padding-top-bottom-size-small" style="margin-right: 0;">
       <div class="clearfix">
         <div class="card-div-title fl">学生记录总数分析</div>
         <div class="lookmore fr">查看更多</div>
@@ -293,30 +293,30 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout-list-content {
-  background-color: #f8f8f8;
+  background-color: #f8f8f8!important;
   overflow: auto;
   padding-bottom: 20px;
   .cardDiv {
-    width: 48.5%;
+    width: 49.5%;
     margin-right: 1%;
     background-color: #fff;
     border-radius:10px;
     height: 385px;
     box-sizing: border-box;
     padding: 16px 2% 0;
+    overflow: auto;
     .card-div-title {
       font-size: 18px;
       font-weight:bold;
       color:rgba(153,153,153,1);
     }
     .userDiv {
-      width: 33.8%;
       height: 145px;
       background:rgba(51,150,252,0.1);
       border-radius:10px;
-      padding: 30px 0 35px 2.5%;
+      padding: 30px 45px 35px 25px;
       box-sizing: border-box;
       margin-right: 2.8%;
       img {
@@ -338,19 +338,18 @@ export default {
       }
     }
     .stuNum {
-      height:145px;
+      height: 145px;
       background:rgba(248,248,248,1);
-      border-radius:10px;
-      width: 16.8%;
+      border-radius: 10px;
       text-align: center;
-      padding: 42px 0 26px;
+      padding: 38px 22px 26px;
       box-sizing: border-box;
       margin-right: 2.8%;
       p:first-child {
         font-weight:bold;
         font-size: 36px;
         margin: 0;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
       }
       p:last-child {
         font-size: 14px;
@@ -362,14 +361,12 @@ export default {
     .tablistDiv {
       height:40px;
       background:rgba(248,248,248,1);
-      border-radius:10px;
-      width: 22%;
+      border-radius: 10px;
       margin-right: 1.55%;
-      padding-left: 2.6%;
       line-height: 40px;
       box-sizing: border-box;
+      display: flex;
       span:first-child {
-        margin-right: 6%;
         font-size: 14px;
         color:rgba(51,51,51,1);
         height: 100%;

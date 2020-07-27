@@ -1,6 +1,6 @@
 <template>
   <section class="nav-bar">
-    <div class="nav-bar-title bordercolor">
+    <div class="nav-bar-title">
       <div class="bgcolor">
         <i class="icon-sxpj-solid" />
       </div>

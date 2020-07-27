@@ -1,5 +1,5 @@
 <template>
-  <div id="app-comprehensiveQuality" class="app-comprehensiveQuality">
+  <div id="app-comprehensiveQuality" class="app-content--standalone app-comprehensiveQuality">
     <router-view />
   </div>
 </template>

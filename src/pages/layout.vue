@@ -14,6 +14,5 @@ export default {
 .app-comprehensiveQuality-section {
   height: 100%;
   overflow: auto;
-  padding-left: 2%;
 }
 </style>

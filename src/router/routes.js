@@ -16,6 +16,14 @@ const emailLayout = {
     name: 'commentBox',
     path: 'cqyList/commentBox',
     component: () => import('@/pages/navList/tcComment')
+  }, {
+    name: 'summaryBox',
+    path: 'cqyList/summaryBox',
+    component: () => import('@/pages/navList/recordSummary')
+  }, {
+    name: 'printBox',
+    path: 'cqyList/printBox',
+    component: () => import('@/pages/navList/printRecord')
   }]
 }
 

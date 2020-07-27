@@ -1,44 +1,42 @@
 <template>
   <section class="layout-list-content">
-    <div class="comment-div">
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-        <el-menu-item index="1">班主任评语</el-menu-item>
-        <el-menu-item index="2">学生自评</el-menu-item>
-        <el-menu-item index="3">家长评语</el-menu-item>
-      </el-menu>
-      <div class="clearfix padding-top-bottom-size-nomal padding-left-right-size-nomal">
-        <el-input
-          v-model="inputVal"
-          suffix-icon="el-icon-search"
-          style="width: 200px; margin-right: 5px;"
-        />
-        <el-cascader
-          v-model="selectvalue"
-          :options="options"
-          @change="handleChange"
-        />
-      </div>
-      <div class="clearfix">
-        <div v-for="(item, index) in commentList" :key="index" class="box-div fl clearfix padding-left-right-size-nomal">
-          <div class="fl studentDiv margin-bottom-size-nomal padding-top-bottom-size-nomal">
-            <div class="imgDiv" />
-            <div class="stuname-div">{{ item.stuName }}</div>
-          </div>
-          <div class="comment-content">
-            {{ item.comment }}
-          </div>
-        </div>
-      </div>
-      <el-pagination
-        :page-size="10"
-        background
-        layout="prev, pager, next, jumper, sizes, total"
-        :total="total"
-        class="tx-c margin-top-size-nomal padding-bottom-size-nomal"
-        @current-change="searchComment"
-        @size-change="pageSizeChange"
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+      <el-menu-item index="1">班主任评语</el-menu-item>
+      <el-menu-item index="2">学生自评</el-menu-item>
+      <el-menu-item index="3">家长评语</el-menu-item>
+    </el-menu>
+    <div class="clearfix padding-top-bottom-size-nomal padding-left-right-size-nomal">
+      <el-input
+        v-model="inputVal"
+        suffix-icon="el-icon-search"
+        style="width: 200px; margin-right: 5px;"
+      />
+      <el-cascader
+        v-model="selectvalue"
+        :options="options"
+        @change="handleChange"
       />
     </div>
+    <div class="clearfix">
+      <div v-for="(item, index) in commentList" :key="index" class="box-div fl padding-left-right-size-nomal">
+        <div class="studentDiv margin-bottom-size-nomal padding-top-bottom-size-nomal margin-right-size-mix">
+          <div class="imgDiv" />
+          <div class="stuname-div">{{ item.stuName }}</div>
+        </div>
+        <div class="comment-content">
+          {{ item.comment }}
+        </div>
+      </div>
+    </div>
+    <el-pagination
+      :page-size="10"
+      background
+      layout="prev, pager, next, jumper, sizes, total"
+      :total="total"
+      class="tx-c margin-top-size-nomal padding-bottom-size-nomal"
+      @current-change="searchComment"
+      @size-change="pageSizeChange"
+    />
   </section>
 </template>
 
@@ -114,27 +112,22 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout-list-content {
-  background-color: #f8f8f8;
   height: 100%;
   overflow: auto;
-  padding-right: 1.6%;
-  .comment-div {
-    height: 100%;
-    overflow: auto;
-    background-color: #fff;
-  }
   .box-div {
     width: 50%;
     box-sizing: border-box;
+    display: flex;
     .studentDiv {
-        width: 15%;
-        height:140px;
+        height: 140px;
         background:rgba(248,248,248,1);
-        border-radius:10px;
+        border-radius: 10px;
         box-sizing: border-box;
         display: flex;
+        padding-left: 25px;
+        padding-right: 25px;
         flex-direction: column;
         align-items: center;
         .imgDiv {
@@ -151,7 +144,6 @@ export default {
     }
     .comment-content {
         height:140px;
-        margin-left: 16%;
         background:rgba(248,248,248,1);
         border-radius:10px;
         padding: 15px;
