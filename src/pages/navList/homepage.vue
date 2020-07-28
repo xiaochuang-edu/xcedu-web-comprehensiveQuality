@@ -1,36 +1,36 @@
 <template>
   <section class="layout-list-content clearfix">
-    <div class="cardDiv fl margin-bottom-size-nomal padding-top-bottom-size-small" style="padding-right: 0;">
+    <div class="cardDiv fl margin-bottom-size-nomal padding-top-size-small padding-bottom-size-nomal padding-left-right-size-nomal" style="padding-right: 0;">
       <div class="card-div-title margin-bottom-size-nomal">我的记录</div>
       <div class="clearfix">
-        <div class="clearfix fl userDiv">
+        <div class="clearfix fl margin-bottom-size-nomal userDiv">
           <img src="" alt="" class="fl margin-right-size-small">
           <div class="fl">
             <p class="username">张海龙</p>
             <p class="positionDiv">竹行中学 | 校长</p>
           </div>
         </div>
-        <div class="fl stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum">
           <p style="color:rgba(105,138,246,1);">2543</p>
           <p>学生数</p>
         </div>
-        <div class="fl stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum">
           <p style="color:rgba(165,197,99,1);">8516</p>
           <p>记录数</p>
         </div>
-        <div class="fl stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum">
           <p style="color:rgba(240,107,65,1);">109</p>
           <p>待审核</p>
         </div>
       </div>
-      <div class="clearfix margin-top-size-nomal">
+      <div class="clearfix">
         <div v-for="(item, index) in tabList" :key="index" class="fl clearfix tablistDiv margin-top-size-small padding-left-right-size-nomal">
           <span class="margin-right-size-small">{{ item.tabName }}</span>
           <span class="color">{{ item.number }}</span>
         </div>
       </div>
     </div>
-    <div class="cardDiv fl margin-bottom-size-nomal padding-top-bottom-size-small" style="margin-right: 0;">
+    <div class="cardDiv padding-top-size-small padding-bottom-size-nomal padding-left-right-size-nomal fl margin-bottom-size-nomal" style="margin-right: 0;">
       <div class="clearfix">
         <div class="card-div-title fl">学生特长排名</div>
         <div class="lookmore fr">查看更多</div>
@@ -46,14 +46,14 @@
         <span class="fl" style="font-weight: normal;">{{ item1.stuname }}</span>
       </div>
     </div>
-    <div class="cardDiv fl padding-top-bottom-size-small">
+    <div class="cardDiv fl padding-top-size-small padding-bottom-size-nomal padding-left-right-size-nomal">
       <div class="clearfix">
         <div class="card-div-title fl">标签分析</div>
         <div class="lookmore fr">查看更多</div>
       </div>
       <div id="main1" ref="main1" />
     </div>
-    <div class="cardDiv fl padding-top-bottom-size-small" style="margin-right: 0;">
+    <div class="cardDiv fl padding-top-size-small padding-bottom-size-nomal padding-left-right-size-nomal" style="margin-right: 0;">
       <div class="clearfix">
         <div class="card-div-title fl">学生记录总数分析</div>
         <div class="lookmore fr">查看更多</div>
@@ -151,7 +151,7 @@ export default {
           align: 'left',
           itemHeight: 10,
           itemWidth: 10,
-          top: 48,
+          top: 40,
           itemGap: 30,
           data: this.tabnameList,
           textStyle: {
@@ -305,7 +305,6 @@ export default {
     border-radius:10px;
     height: 385px;
     box-sizing: border-box;
-    padding: 16px 2% 0;
     overflow: auto;
     .card-div-title {
       font-size: 18px;
@@ -393,11 +392,11 @@ export default {
       }
     }
     #main1 {
-      height: 340px;
+      height: 330px;
       width: 100%;
     }
     #main2 {
-      height: 340px;
+      height: 330px;
       width: 100%;
     }
   }

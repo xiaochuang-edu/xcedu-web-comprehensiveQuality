@@ -32,15 +32,52 @@
     </div>
     <div class="padding-left-right-size-nomal recordsummary-div">
       <div class="contentCenter-div clearfix">
-        <div class="left-container fl">
-          <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate" @change="handleCheckAllChange">全选</el-checkbox>
-          <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-            <el-checkbox>
-              <template />
-            </el-checkbox>
-          </el-checkbox-group>
-        </div>
-        <div class="right-container" />
+        <el-row>
+          <el-col :span="8">
+            <div class="left-container fl">
+              <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate" @change="handleCheckAllChange">全选</el-checkbox>
+              <div class="checkCard">
+                <div v-for="(item, index) in selectcheckList" :key="index" class="checkbox-select-div margin-bottom-size-small">
+                  <el-checkbox v-model="item.checked" @change="onCheck()" />
+                  <div class="information-div" :class="redchanged == index ? 'bgcolor' : 'bgcolor1'" @click="onClick(index)">
+                    <p class="first-pdiv">
+                      <span :class="redchanged === index ? 'color2' : 'color'">{{ item.label }}</span>
+                      <span :class="redchanged == index ? 'color2' : 'color1'">{{ item.designation }}</span>
+                    </p>
+                    <p :class="redchanged == index ? 'color2' : 'color1'">{{ item.stuInfo }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="16">
+            <div class="right-container fl">
+              <div class="topcontainer-div">
+                <div class="btnDiv">
+                  <el-button type="primary">驳回</el-button>
+                  <el-button type="primary">通过</el-button>
+                </div>
+              </div>
+              <el-row>
+                <el-col :span="3">
+                  <div class="grid-content">
+                    <h5>陈俊旭(高三1班)</h5>
+                    <p>维度</p>
+                    <p>细目</p>
+                    <p>荣誉称号</p>
+                    <p>获奖级别</p>
+                    <p>奖项级别</p>
+                    <p>组织机构</p>
+                    <p>标签</p>
+                    <p>附件</p>
+                  </div>
+                </el-col>
+                <el-col :span="1"><div class="grid-content" /></el-col>
+                <el-col :span="20"><div class="grid-content" /></el-col>
+              </el-row>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -50,14 +87,88 @@
 export default {
   data () {
     return {
+      isIndeterminate: false,
       inputVal: '',
       activeIndex: '1',
-      checkAll: false
+      checkAll: false,
+      redchanged: 0,
+      selectcheckList: [{
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }, {
+        checked: false,
+        label: '【思想品德-先进个人】',
+        designation: '安徽省十佳中学生',
+        stuInfo: '陈俊旭<高三1班>2020-03-02  17:20提交2020-03-05  17:20截止'
+      }]
     }
   },
   methods: {
-    handleCheckAllChange: function () {
-
+    onClick: function (i) {
+      this.redchanged = i
+    },
+    handleCheckAllChange: function (val) {
+      this.checkAll = val
+      for (let i = 0; i < this.selectcheckList.length; i++) {
+        this.selectcheckList[i].checked = val
+      }
+    },
+    onCheck: function () {
+      let count = 0
+      for (let i = 0; i < this.selectcheckList.length; i++) {
+        if (this.selectcheckList[i].checked === true) {
+          count += 1
+        } else {
+          count -= 1
+        }
+      }
+      if (count === this.selectcheckList.length) {
+        this.checkAll = true
+      } else {
+        this.checkAll = false
+      }
     }
   }
 }
@@ -72,11 +183,83 @@ export default {
     border: 1px solid #ededed;
     border-radius: 4px;
     height: 790px;
+    .el-col-8 {
+      height: 790px;
+      overflow: hidden;
+    }
     .left-container {
         background-color: #fff;
         height: 100%;
-        padding: 20px 15px 0 15px;
+        box-sizing: border-box;
+        padding: 20px 5px 35px 15px;
+        overflow: hidden;
+        .checkCard {
+          height: 100%;
+          overflow: auto;
+          padding-right: 10px;
+          padding-top: 15px
+        }
+        .checkbox-select-div {
+          display: flex;
+          align-items: center;
+          .el-checkbox {
+            margin-right: 15px;
+          }
+          .information-div:hover {
+            box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+          }
+          .bgcolor1 {
+            background:rgba(248,248,248,1);
+          }
+          .information-div {
+            padding: 15px 10px;
+            border:1px solid rgba(237,237,237,1);
+            border-radius:4px;
+            font-size: 14px;
+            cursor: pointer;
+            .color2 {
+              color: #fff;
+            }
+            p {
+              margin: 0;
+            }
+            .first-pdiv {
+              margin-bottom: 15px;
+            }
+            .color1 {
+              color: #333;
+            }
+          }
+        }
     }
+    .el-col-11 {
+      height: 790px;
+      overflow: auto;
     }
+    .right-container {
+      background-color: #fff;
+      height: 790px;
+      overflow: auto;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      .topcontainer-div {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ededed;
+        margin-bottom: 30px;
+        .btnDiv {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+</style>
+<style>
+.recordsummary-div .el-checkbox__label {
+  padding-left: 15px;
+}
+.recordsummary-div .el-button+.el-button {
+  margin-left: 5px;
 }
 </style>
