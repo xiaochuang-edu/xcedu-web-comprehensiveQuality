@@ -24,6 +24,10 @@ const emailLayout = {
     name: 'printBox',
     path: 'cqyList/printBox',
     component: () => import('@/pages/navList/printRecord')
+  }, {
+    name: 'countBox',
+    path: 'cqyList/countBox',
+    component: () => import('@/pages/navList/datastatistics')
   }]
 }
 

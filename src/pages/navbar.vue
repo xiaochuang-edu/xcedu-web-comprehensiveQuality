@@ -69,13 +69,6 @@ export default {
     this.viewName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1)
   },
   methods: {
-    compose () {
-      this.$router.push('/mfs-email/compose')
-    },
-    viewMsgList (name) {
-      // this.$router.push('/email/')
-      this.$router.push({ name: 'msgLlist', params: { viewname: name } })
-    }
   }
 }
 </script>

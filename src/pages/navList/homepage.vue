@@ -106,7 +106,6 @@ export default {
         pieces: '2510',
         stuname: '李玉华<130>'
       }],
-      tabnameList: ['篮球', '足球', '羽毛球', '绘画', '音乐', '钢琴'],
       labelList: [{
         name: '篮球',
         value: 2510
@@ -151,9 +150,8 @@ export default {
           align: 'left',
           itemHeight: 10,
           itemWidth: 10,
-          top: 40,
+          top: 34,
           itemGap: 30,
-          data: this.tabnameList,
           textStyle: {
             color: '#999',
             fontSize: 14,

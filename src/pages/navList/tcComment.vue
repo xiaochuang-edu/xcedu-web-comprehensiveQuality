@@ -97,17 +97,17 @@ export default {
       }, {
         stuName: '程俊熙',
         comment: '你是个聪明自信的孩子，在学习上，能够认真对待，但还需再努力一些，老师相信只要你信心不倒，努力不懈，终有一天会到达成功的彼岸!'
-      }],
-      methods: {
-        handleChange: function () {
+      }]
+    }
+  },
+  methods: {
+    handleChange: function () {
 
-        },
-        searchComment: function () {
+    },
+    searchComment: function () {
 
-        },
-        pageSizeChange: function () {
-        }
-      }
+    },
+    pageSizeChange: function () {
     }
   }
 }
