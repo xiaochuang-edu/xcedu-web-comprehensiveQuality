@@ -1,6 +1,6 @@
 import Layout from '@page/layout.vue'
 
-const emailLayout = {
+const comprehensiveQualityLayout = {
   path: '/mfs-comprehensiveQuality',
   redirect: '/mfs-comprehensiveQuality/cqyList/homeBox',
   component: Layout,
@@ -28,7 +28,11 @@ const emailLayout = {
     name: 'countBox',
     path: 'cqyList/countBox',
     component: () => import('@/pages/navList/datastatistics')
+  }, {
+    name: 'settingBox',
+    path: 'cqyList/settingBox',
+    component: () => import('@/pages/navList/setup')
   }]
 }
 
-export default [emailLayout]
+export default [comprehensiveQualityLayout]

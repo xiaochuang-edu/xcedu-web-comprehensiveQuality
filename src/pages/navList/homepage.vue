@@ -236,7 +236,7 @@ export default {
               lineStyle: {
                 color: 'rgba(237,237,237,1)',
                 width: 1,
-                type: 'solid'
+                type: 'dashed'
               }
             }
           }

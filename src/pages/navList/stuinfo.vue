@@ -9,6 +9,7 @@
       <el-cascader
         v-model="selectvalue"
         :options="options"
+        :props="{ expandTrigger: 'hover' }"
         @change="handleChange"
       />
     </div>
