@@ -1,4 +1,4 @@
-<template>
+<template v-if="showFlag">
   <div class="labelmanagement-div">
     <div class="topcontent-div clearfix">
       <el-input
@@ -7,7 +7,7 @@
         suffix-icon="el-icon-search"
         style="width: 200px;"
       />
-      <el-button class="fr" type="primary">新建</el-button>
+      <el-button class="fr" type="primary" @click="onClick">新建</el-button>
     </div>
     <div class="clearfix">
       <div v-for="(item, index) in inputList" :key="index" class="fl inputDiv">
@@ -15,7 +15,7 @@
           v-model="item.value"
           style="width: 200px;"
         />
-        <i class="icon-minus-solid-o" />
+        <i class="icon-minus-solid-o" @click="deleteClick(index)" />
       </div>
     </div>
   </div>
@@ -39,6 +39,16 @@ export default {
       }, {
         value: '钢琴'
       }]
+    }
+  },
+  methods: {
+    onClick: function () {
+      this.inputList.push({
+        value: ''
+      })
+    },
+    deleteClick: function (i) {
+      this.inputList.splice(i, 1)
     }
   }
 }

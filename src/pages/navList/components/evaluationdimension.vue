@@ -1,7 +1,7 @@
 <template>
   <div class="evaluationdimension-div">
     <div class="clearfix padding-top-size-nomal padding-right-size-nomal">
-      <el-button class="fr" type="primary">新建</el-button>
+      <el-button class="fr" type="primary" @click="onClick">新建</el-button>
     </div>
     <div class="enable">
       <i class="enableTag bgcolor" />
@@ -13,7 +13,6 @@
           :list="dimensionList1"
           :options="{group:{name: falgs,pull:'clone'},filter: '.undraggable', sort: false}"
           class="dragArea1"
-          @start="onStart"
           @end="onEnd"
         >
           <div v-for="(item, index) in dimensionList1" :key="index" class="cardDiv">
@@ -34,7 +33,6 @@
           :list="dimensionList2"
           :options="{group:{name: falgs,pull:'clone'},filter: '.undraggable', sort: false}"
           class="dragArea2"
-          @start="onStart"
           @end="onEnd"
         >
           <div v-for="(item, index) in dimensionList2" :key="index" class="cardDiv">
@@ -55,7 +53,6 @@
           :list="dimensionList3"
           :options="{group:{name: falgs,pull:'clone'},filter: '.undraggable', sort: false}"
           class="dragArea3"
-          @start="onStart"
           @end="onEnd"
         >
           <div v-for="(item, index) in dimensionList3" :key="index" class="cardDiv">
@@ -66,16 +63,23 @@
         </draggable>
       </div>
     </div>
+    <my-createnewdimension :dialogvisible="dialogvisible" @func="getMsgFormSon" />
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
+import createnewdimension from './createnewdimension.vue'
 
 export default {
-  components: { draggable },
+  components: {
+    draggable,
+    'my-createnewdimension': createnewdimension
+  },
   data () {
     return {
+      dialogvisible: false,
+      form: {},
       falgs: 'article',
       dimensionList1: [{
         name: '思想品德'
@@ -101,7 +105,7 @@ export default {
     }
   },
   methods: {
-    onEnd (ev) {
+    onEnd: function (ev) {
       if (ev.from.className === 'dragArea1' && ev.to.className !== 'dragArea1') {
         this.$delete(this.dimensionList1, ev.oldIndex)
       } else if (ev.from.className === 'dragArea2' && ev.to.className !== 'dragArea2') {
@@ -109,6 +113,12 @@ export default {
       } else if (ev.from.className === 'dragArea3' && ev.to.className !== 'dragArea3') {
         this.$delete(this.dimensionList3, ev.oldIndex)
       }
+    },
+    onClick: function () {
+      this.dialogvisible = true
+    },
+    getMsgFormSon: function (data) {
+      this.dialogvisible = data
     }
   }
 }
