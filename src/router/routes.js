@@ -2,35 +2,35 @@ import Layout from '@page/layout.vue'
 
 const comprehensiveQualityLayout = {
   path: '/mfs-comprehensiveQuality',
-  redirect: '/mfs-comprehensiveQuality/cqyList/homeBox',
+  redirect: '/mfs-comprehensiveQuality/homeBox',
   component: Layout,
   children: [{
     name: 'homeBox',
-    path: 'cqyList/homeBox',
+    path: '/mfs-comprehensiveQuality/homeBox',
     component: () => import('@/pages/navList/homepage')
   }, {
     name: 'stuinfoBox',
-    path: 'cqyList/stuinfoBox',
+    path: '/mfs-comprehensiveQuality/stuinfoBox',
     component: () => import('@/pages/navList/stuinfo')
   }, {
     name: 'commentBox',
-    path: 'cqyList/commentBox',
+    path: '/mfs-comprehensiveQuality/commentBox',
     component: () => import('@/pages/navList/tcComment')
   }, {
     name: 'summaryBox',
-    path: 'cqyList/summaryBox',
+    path: '/mfs-comprehensiveQuality/summaryBox',
     component: () => import('@/pages/navList/recordSummary')
   }, {
     name: 'printBox',
-    path: 'cqyList/printBox',
+    path: '/mfs-comprehensiveQuality/printBox',
     component: () => import('@/pages/navList/printRecord')
   }, {
     name: 'countBox',
-    path: 'cqyList/countBox',
+    path: '/mfs-comprehensiveQuality/countBox',
     component: () => import('@/pages/navList/datastatistics')
   }, {
     name: 'settingBox',
-    path: 'cqyList/settingBox',
+    path: '/mfs-comprehensiveQuality/settingBox',
     component: () => import('@/pages/navList/setup')
   }]
 }

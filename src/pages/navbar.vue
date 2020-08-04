@@ -6,8 +6,8 @@
       </div>
       <p>学生综合素质评价</p>
     </div>
-    <el-menu class="el-menu-vertical-demo" router :default-active="`/mfs-comprehensiveQuality/cqyList/${viewName}`">
-      <el-menu-item v-for="(nav, index) in navList" :key="index" :index="`/mfs-comprehensiveQuality/cqyList/${nav.viewName}`">
+    <el-menu class="el-menu-vertical-demo" router :default-active="activated" @select="handleSelect">
+      <el-menu-item v-for="(nav, index) in navList" :key="index" :index="nav.viewName">
         <i :class="nav.icon" :style="{ color: nav.color }" />
         <span slot="title">{{ nav.name }}</span>
       </el-menu-item>
@@ -65,10 +65,16 @@ export default {
       }]
     }
   },
-  mounted: function () {
-    this.viewName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1)
+  computed: {
+    activated: function () {
+      return this.$store.state.tabbar.comprehensiveQualityValue
+    }
   },
   methods: {
+    handleSelect: function (key) {
+      this.$store.commit('changeValue', key)
+      this.$router.replace(`/mfs-comprehensiveQuality/${key}`)
+    }
   }
 }
 </script>

@@ -10,21 +10,21 @@
             <p class="positionDiv">竹行中学 | 校长</p>
           </div>
         </div>
-        <div class="fl margin-bottom-size-nomal stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum" @click="onClick(1)">
           <p style="color:rgba(105,138,246,1);">2543</p>
           <p>学生数</p>
         </div>
-        <div class="fl margin-bottom-size-nomal stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum" @click="onClick(2)">
           <p style="color:rgba(165,197,99,1);">8516</p>
           <p>记录数</p>
         </div>
-        <div class="fl margin-bottom-size-nomal stuNum">
+        <div class="fl margin-bottom-size-nomal stuNum" @click="onClick(3)">
           <p style="color:rgba(240,107,65,1);">109</p>
           <p>待审核</p>
         </div>
       </div>
       <div class="clearfix">
-        <div v-for="(item, index) in tabList" :key="index" class="fl clearfix tablistDiv margin-top-size-small padding-left-right-size-nomal">
+        <div v-for="(item, index) in tabList" :key="index" style="cursor: pointer;" class="fl clearfix tablistDiv margin-top-size-small padding-left-right-size-nomal" @click="goTable(item.tabName)">
           <span class="margin-right-size-small">{{ item.tabName }}</span>
           <span class="color">{{ item.number }}</span>
         </div>
@@ -60,13 +60,18 @@
       </div>
       <div id="main2" ref="main2" />
     </div>
+    <my-dimensionrecord :showtable="showtable" :dialogtitle="dialogtitle" @func="getMsgFormSon" />
   </section>
 </template>
 
 <script>
 import echarts from 'echarts'
+import dimensionrecord from './components/dimensionrecord.vue'
 
 export default {
+  components: {
+    'my-dimensionrecord': dimensionrecord
+  },
   data () {
     return {
       tabList: [{
@@ -124,7 +129,9 @@ export default {
       }, {
         name: '钢琴',
         value: 1696
-      }]
+      }],
+      showtable: false,
+      dialogtitle: ''
     }
   },
   mounted: function () {
@@ -137,6 +144,25 @@ export default {
     }
   },
   methods: {
+    getMsgFormSon: function (data) {
+      this.showtable = data
+    },
+    onClick: function (type) {
+      if (type === 1) {
+        this.$store.commit('changeValue', 'stuinfoBox')
+        this.$router.push('/mfs-comprehensiveQuality/stuinfoBox')
+      } else if (type === 2) {
+        this.$store.commit('changeValue', 'summaryBox')
+        this.$router.push('/mfs-comprehensiveQuality/summaryBox')
+      } else if (type === 3) {
+        this.$store.commit('changeValue', 'printBox')
+        this.$router.push('/mfs-comprehensiveQuality/printBox')
+      }
+    },
+    goTable: function (name) {
+      this.showtable = true
+      this.dialogtitle = name
+    },
     drawPie1: function () {
       var charts1 = echarts.init(this.$refs.main1)
       var option1 = {
@@ -342,6 +368,7 @@ export default {
       padding: 38px 22px 26px;
       box-sizing: border-box;
       margin-right: 2.8%;
+      cursor: pointer;
       p:first-child {
         font-weight:bold;
         font-size: 36px;
